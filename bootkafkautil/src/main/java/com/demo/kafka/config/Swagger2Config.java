@@ -25,7 +25,7 @@ public class Swagger2Config {
 	private ApiInfo apiEndPointsInfo() {
 		return new ApiInfoBuilder().title("Kafka Topic Replicator REST API")
 				.description("REST APIs for Kafka Topic Replication")
-				.contact(new Contact("Abesh Misra", "", "Abesh.Misra@cognizant.com")).license("Apache 2.0")
+				.contact(new Contact("Cognizant IBM Team", "", "ctsibm@cognizant.com")).license("Apache 2.0")
 				.licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html").version("1.0.0").build();
 	}
 
