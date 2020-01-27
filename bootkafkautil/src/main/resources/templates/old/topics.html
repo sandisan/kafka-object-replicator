@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Topics</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+</head>
+<body >
+<form action="#" th:action="@{/topics/create}" method="post"
+		th:object="${sourcemodel}">
+<br/>
+<div class="container">
+<div class="form-group">
+  <div class="row">
+  <div class="col-md-2">
+   <label>Source server : </label>
+</div>
+<div class="col-md-4">
+    <input type="text" th:value="*{sourceServer}" th:field="*{sourceServer}" readonly="readonly"/>
+</div>
+</div>
+</div>
+<div class="form-group">
+  <div class="row">
+  
+    <div class="col-md-2">
+    	 <label>Select Topics to replicate : </label>
+    </div>
+    <div class="col-md-4">
+    	 <select class="form-control" name="topic" id="topicId"
+				multiple="multiple" th:field="*{selectedTopics}">
+				<option th:each="topic : *{topics}" th:value="${topic}"
+					th:text="${topic}"></option>
+			</select>
+    </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row">
+    
+    	<div class="col-md-2">
+    	Select target server
+    </div>
+    <div class="col-md-4">
+	    	<select class="form-control" name="server" id="serverId" th:field="*{targetServer}">
+				<option value="0">--Select--</option>
+				<option th:each="server : *{servers}" th:value="${server}"
+					th:text="${server}"></option>
+			</select>
+    </div>
+    </div>
+  </div>
+  <div class="form-group">
+  <div class="row">
+ 
+    <div class="col-md-4">
+    	<input type="submit" class="button" value="Proceed" />
+    </div>
+    </div>
+  </div>
+</div>
+
+</form>
+</body>
+</html>

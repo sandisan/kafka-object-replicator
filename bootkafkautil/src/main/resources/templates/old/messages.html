@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Messages</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body class="watermark">
+<form action="#" th:action="@{/messages}"  method="get">
+    <p><input type="submit" class="button" value="Refresh" /></p>
+    <div class="wrapper" align="center">
+    <table  class="datatable">
+     <caption>Content</caption>
+    
+    <tr th:if="${messages.empty}">
+            <td colspan="2"> No messages yet </td>
+        </tr>
+        <tr th:each="message : ${messages}">
+            <td><span th:text="${message}"> Content </span></td>
+        </tr>
+    
+</table>
+</div>
+</form>   
+</body>
+</html>
