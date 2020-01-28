@@ -38,6 +38,7 @@ public class KafkaController {
 	@PostMapping("/topics")
 	public ModelAndView getTopics(@RequestParam("server") String server){
 		System.out.println("server : "+server);
+		System.out.println("Working Directory = " + System.getProperty("user.dir"));
 		Properties properties = new Properties();
 		properties.put("bootstrap.servers", server);
 		properties.put("client.id", "java-admin-client-1");
