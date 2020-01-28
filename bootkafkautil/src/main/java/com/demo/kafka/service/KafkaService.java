@@ -209,7 +209,7 @@ public class KafkaService {
 		    byte[] bdata = FileCopyUtils.copyToByteArray(inputStream);
 		    File file = new File("/deployments/es-cert.jks"); 
 	            OutputStream os  = new FileOutputStream(file); 
-		    os.write(bytes);
+		    os.write(bdata);
 		    os.close();
 		} catch (IOException e) {
 		    e.printStackTrace();
