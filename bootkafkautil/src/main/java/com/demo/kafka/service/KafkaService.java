@@ -44,6 +44,7 @@ public class KafkaService {
 	}
 
 	public Boolean testConnection(String server) {
+		System.out.println("Working Directory = " + System.getProperty("user.dir"));
 		Boolean status = false;
 		Properties properties = new Properties();
 		properties.put("bootstrap.servers", server);
