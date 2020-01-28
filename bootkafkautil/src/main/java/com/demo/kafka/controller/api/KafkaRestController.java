@@ -42,6 +42,7 @@ public class KafkaRestController {
 	@GetMapping("/es/testConnection")
 	public Boolean testEsConnection(@RequestParam("server") String server,@RequestParam("api_key") String api_key) {
 		System.out.println("server : " + server);
+		System.out.println("##### Working Directory #### " + System.getProperty("user.dir"));
 		return kafkaService.testEsConnection(server,api_key);
 
 	}
