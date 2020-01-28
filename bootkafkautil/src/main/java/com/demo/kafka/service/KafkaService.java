@@ -200,7 +200,7 @@ public class KafkaService {
 		properties.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_SSL");
 		properties.put("ssl.truststore.password", "password");
 		properties.put(SslConfigs.SSL_PROTOCOL_CONFIG, "TLSv1.2");
-		properties.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, "/es-cert.jks");
+		properties.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, "bootkafkautil/src/main/resources/es-cert.jks");
 		properties.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, "password");
 		properties.put(SaslConfigs.SASL_MECHANISM, "PLAIN");
 		String saslJaasConfig = "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"" + "admin"
