@@ -26,6 +26,12 @@ import com.demo.kafka.model.CreateTopicResponse;
 import com.demo.kafka.model.SourceModel;
 import com.demo.kafka.model.TopicDesc;
 
+import org.springframework.core.io.Resource;
+import org.springframework.util.FileCopyUtils; 
+import java.io.File; 
+import java.io.FileOutputStream; 
+import java.io.OutputStream; 
+
 @Service
 public class KafkaService {
 
@@ -194,6 +200,18 @@ public class KafkaService {
 
 	private Properties addConnectionConfig(String server, String api_key) {
 		// api_key = "HPS6FlF0IGBz3LTl3thGExe46nrGOeA5qhtnIAgj8_kb";
+		Resource resource = new ClassPathResource("classpath:es-cert.jks");
+		InputStream inputStream = resource.getInputStream();
+		try {
+		    byte[] bdata = FileCopyUtils.copyToByteArray(inputStream);
+		    File file = new File("/deployments/es-cert.jks"); 
+	            OutputStream os  = new FileOutputStream(file); 
+		    os.write(bytes);
+		    os.close();
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+		
 		Properties properties = new Properties();
 		properties.put("bootstrap.servers", server);
 		properties.put("client.id", UUID.randomUUID().toString());
@@ -201,7 +219,7 @@ public class KafkaService {
 		properties.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_SSL");
 		properties.put("ssl.truststore.password", "password");
 		properties.put(SslConfigs.SSL_PROTOCOL_CONFIG, "TLSv1.2");
-		properties.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, "bootkafkautil/src/main/resources/es-cert.jks");
+		properties.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, "/deployments/es-cert.jks");
 		properties.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, "password");
 		properties.put(SaslConfigs.SASL_MECHANISM, "PLAIN");
 		String saslJaasConfig = "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"" + "admin"
