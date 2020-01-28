@@ -203,9 +203,10 @@ public class KafkaService {
 
 	private Properties addConnectionConfig(String server, String api_key) {
 		// api_key = "HPS6FlF0IGBz3LTl3thGExe46nrGOeA5qhtnIAgj8_kb";
-		Resource resource = new ClassPathResource("classpath:es-cert.jks");
-		InputStream inputStream = resource.getInputStream();
+
 		try {
+		    Resource resource = new ClassPathResource("classpath:es-cert.jks");
+		    InputStream inputStream = resource.getInputStream();
 		    byte[] bdata = FileCopyUtils.copyToByteArray(inputStream);
 		    File file = new File("/deployments/es-cert.jks"); 
 	            OutputStream os  = new FileOutputStream(file); 
