@@ -17,10 +17,6 @@ import com.demo.kafka.model.CreateTopicResponse;
 import com.demo.kafka.model.TopicDesc;
 import com.demo.kafka.service.KafkaService;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-
 @RestController
 @RequestMapping("/api")
 @CrossOrigin
@@ -45,20 +41,10 @@ public class KafkaRestController {
 	
 	@GetMapping("/es/testConnection")
 	public Boolean testEsConnection(@RequestParam("server") String server,@RequestParam("api_key") String api_key) {
-		System.out.println("server : " + server);
-		
+		System.out.println("server : " + server);	
 		String dirName = System.getProperty("user.dir");
 		System.out.println("##### Working Directory #### " + dirName);
-		try {	
-			Files.list(new File(dirName).toPath())
-			.limit(10)
-			.forEach(path -> {
-			    System.out.println(path);
-			});
-		}catch (IOException ioe){
-			 ioe.printStackTrace();
-		}
-
+		
 		return kafkaService.testEsConnection(server,api_key);
 
 	}
